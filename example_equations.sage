@@ -1,18 +1,22 @@
 # In this example we show how one uses our code to find equations of Shimura curves
+
+from sage.modular.btquotients.btquotient import BruhatTitsQuotient
+from sage.modular.btquotients.pautomorphicform import BruhatTitsHarmonicCocycles
+
 p=53
 Nm=2
 Np=1
 k=2
-#Y=BTQuotient(p,2,use_magma = False)
-Y=BTQuotient(p,2)
+#Y=BruhatTitsQuotient(p,2,use_magma = False)
+Y=BruhatTitsQuotient(p,2)
 genus=Y.genus()
-print 'genus=%s'%genus
+print(f'{genus=}')
 
 # Define a space of harmonic cocycles
 prec=30
-M2=HarmonicCocycles(Y,k,prec)
+M2=BruhatTitsHarmonicCocycles(Y,k,prec)
 time B0=M2.basis()
-print "Dimension = %s"%M2.dimension()
+print(f'Dimension = {M2.dimension()}')
 
 # This computes a basis of eigenforms, at least when we don't need to enlarge the field!
 D=M2.decomposition()
